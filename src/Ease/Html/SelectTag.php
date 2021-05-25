@@ -2,22 +2,23 @@
 
 namespace Ease\Html;
 
-/**
- * Html Select.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Html Select.
  */
-class SelectTag extends PairTag {
+class SelectTag extends PairTag
+{
 
     /**
-     * Předvolené položka #.
+     * Default item #.
      *
      * @var string|int
      */
     public $defaultValue = null;
 
     /**
-     * Automaticky nastavovat název elemnetu.
+     * Automatic setting of the elemnet name.
      *
      * @var bool
      */
@@ -31,13 +32,17 @@ class SelectTag extends PairTag {
     /**
      * Html select box.
      *
-     * @param string $name         jmeno
-     * @param array  $items        polozky
-     * @param string $defaultValue id predvolene polozky
-     * @param array  $properties   tag properties
+     * @param string $name         name
+     * @param array  $items        items
+     * @param string $defaultValue default item id
+     * @param array  $properties   select tag properties
      */
-    public function __construct($name, $items = null, $defaultValue = null,
-            $properties = []) {
+    public function __construct(
+        $name,
+        $items = null,
+        $defaultValue = null,
+        $properties = []
+    ) {
         parent::__construct('select', $properties);
         $this->defaultValue = $defaultValue;
         $this->setTagName($name);
@@ -47,11 +52,12 @@ class SelectTag extends PairTag {
     }
 
     /**
-     * Hromadné vložení položek.
+     * Bulk insert items.
      *
-     * @param array $items položky výběru
+     * @param array $items          selection items
      */
-    public function addItems($items) {
+    public function addItems($items)
+    {
         foreach ($items as $itemName => $itemValue) {
             $newItem = $this->addItem(new OptionTag($itemValue, $itemName));
             if (($this->defaultValue == $itemName)) {
@@ -61,20 +67,22 @@ class SelectTag extends PairTag {
     }
 
     /**
-     * Maketa načtení položek.
+     * Mockup of loading items.
      *
      * @return array
      */
-    public function loadItems() {
+    public function loadItems()
+    {
         return [];
     }
 
     /**
-     * Nastavení hodnoty.
+     * Value setting.
      *
-     * @param string $value nastavovaná hodnota
+     * @param string $value     the set value
      */
-    public function setValue($value) {
+    public function setValue($value)
+    {
         if (trim(strlen($value))) {
             foreach ($this->pageParts as $option) {
                 if ($option->getValue() == $value) {
@@ -95,9 +103,10 @@ class SelectTag extends PairTag {
     }
 
     /**
-     * Vložit načtené položky.
+     * Inserta loaded items.
      */
-    public function finalize() {
+    public function finalize()
+    {
         if (!count($this->pageParts)) {
             //Uninitialised Select - so we load items
             $this->addItems($this->loadItems());
@@ -105,11 +114,12 @@ class SelectTag extends PairTag {
     }
 
     /**
-     * Odstarní položku z nabídky.
+     * Removes an item from the menu.
      *
-     * @param string $itemID klíč hodnoty k odstranění ze seznamu
+     * @param string $itemID value key for removing from the list
      */
-    public function delItem($itemID) {
+    public function delItem($itemID)
+    {
         foreach ($this->pageParts as $optionId => $option) {
             if ($option->getValue() == $itemID) {
                 unset($this->pageParts[$optionId]);
@@ -122,12 +132,12 @@ class SelectTag extends PairTag {
      *  
      * @param int $itemID
      */
-    public function disableItem($itemID) {
+    public function disableItem($itemID)
+    {
         foreach ($this->pageParts as $optionId => $option) {
             if ($option->getValue() == $itemID) {
                 $this->pageParts[$optionId]->setTagProperties(['disabled']);
             }
         }
     }
-
 }

@@ -4,8 +4,8 @@ namespace Ease;
 
 /**
  * jQuery common class.
- *
- * @author Vitex <vitex@hippy.cz>
+  *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *  
  */
 class Part extends Document
 {

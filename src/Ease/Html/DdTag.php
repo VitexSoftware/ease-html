@@ -2,20 +2,22 @@
 
 namespace Ease\Html;
 
-/**
- * Obsah definice.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * Definition content.
  */
 class DdTag extends PairTag
 {
 
     /**
-     * Obsah definice.
+     * Definition content
      *
-     * @param string|mixed $content
-     * @param array        $tagProperties
+     * @param string|mixed $content     content included
+     * @param array        $properties  Dd tag properties
      */
-    public function __construct($content = null, $tagProperties = null)
+    public function __construct($content = null, $properties = null)
     {
-        parent::__construct('dd', $tagProperties, $content);
+        parent::__construct('dd', $properties, $content);
     }
 }

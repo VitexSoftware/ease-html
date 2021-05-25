@@ -2,30 +2,30 @@
 
 namespace Ease\Html;
 
-/**
- * Třída pro tělo HTML stránky.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author     Vitex <vitex@hippy.cz>
+ * Body class of HTML page.
  */
 class BodyTag extends PairTag
 {
 
     /**
-     * Tělo stránky je v aplikaci vždy dostupně jako
-     * $this->easeShared->webPage->body.
+     * The page body is always avalible in the app as
+     * WebPage::singleton()->body.
      *
-     * @param mixed  $content     items to be included
-     * @param array  $properties  additional properties for tag
+     * @param mixed  $content     inserted content
+     * @param array  $properties  body tag properties
      */
-    public function __construct($content = null, $properties = null)
+    public function __construct($content = null, $properties = [])
     {
         parent::__construct('body', $properties, $content);
     }
 
     /**
-     * Nastaví jméno objektu na "body".
+     * Sets the object name to "body".
      *
-     * @param string $objectName jméno objektu
+     * @param string $objectName object name
      */
     public function setObjectName($objectName = null)
     {
@@ -33,7 +33,7 @@ class BodyTag extends PairTag
     }
 
     /**
-     * Vykreslí hlavičku HTML stránky.
+     * Renders the head of the HTML page.
      */
     public function draw()
     {

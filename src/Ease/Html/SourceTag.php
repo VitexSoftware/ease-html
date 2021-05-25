@@ -2,22 +2,22 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 source tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 source tag.
  */
 class SourceTag extends PairTag
 {
 
-    /**
-     * Defines multiple media resources for media elements (<video> and <audio>)
-     *
-     * @param mixed  $content    items included
-     * @param array  $properties params array
-     */
-    public function __construct($content = null, $properties = [])
-    {
-        parent::__construct('source', $properties, $content);
-    }
+	/**
+	 * Defines multiple media resources for media elements (<video> and <audio>)
+	 *
+	 * @param mixed  $content    items included
+	 * @param array  $properties source tag properties
+	 */
+	public function __construct($content = null, $properties = [])
+	{
+		parent::__construct('source', $properties, $content);
+	}
 }

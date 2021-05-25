@@ -2,22 +2,22 @@
 
 namespace Ease\Html;
 
-/**
- * HTML major heading tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML major heading tag.
  */
 class StrongTag extends PairTag
 {
 
-    /**
-     * Tag pro tučné písmo.
-     *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
-     */
-    public function __construct($content = null, $properties = [])
-    {
-        parent::__construct('strong', $properties, $content);
-    }
+	/**
+	 * Tag for bold text.
+	 *
+	 * @param mixed $content    inserted value
+	 * @param array $properties strong tag properties
+	 */
+	public function __construct($content = null, $properties = [])
+	{
+		parent::__construct('strong', $properties, $content);
+	}
 }

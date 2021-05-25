@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 figure tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 figure tag.
  */
 class FigureTag extends PairTag
 {
 
     /**
-     * Defines self-contained content
+     * Defines self-contained content.
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties figure tag properties
      */
     public function __construct($content = null, $properties = [])
     {

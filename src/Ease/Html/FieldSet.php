@@ -2,39 +2,39 @@
 
 namespace Ease\Html;
 
-/**
- * Html Fieldset.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * Html Fieldset.
  */
 class FieldSet extends PairTag
 {
     /**
-     * Legenda rámečku.
+     * Frame legend.
      *
      * @var mixed
      */
     public $legend = null;
 
     /**
-     * Objekt s tagem Legendy.
+     * Object with legend tag.
      *
      * @var PairTag
      */
     public $legendTag = null;
 
     /**
-     * Obsah rámu.
+     * Frame content.
      *
      * @var mixed
      */
     public $content = null;
 
     /**
-     * Zobrazí rámeček.
+     * Displays the frame.
      *
-     * @param string|mixed $legend  popisek - text nebo Ease objekty
-     * @param mixed        $content prvky vkládané do rámečku
+     * @param string|mixed $legend      frame title in text format or ease framework object
+     * @param mixed        $content     elements inserted into the frame
      */
     public function __construct($legend, $content = null)
     {
@@ -49,9 +49,9 @@ class FieldSet extends PairTag
     }
 
     /**
-     * Nastavení legendy.
+     * Legend settings.
      *
-     * @param string $legend popisek
+     * @param string $legend description
      */
     public function setLegend($legend)
     {
@@ -59,7 +59,7 @@ class FieldSet extends PairTag
     }
 
     /**
-     * Vložení legendy.
+     * Inserts the legend.
      */
     public function finalize()
     {

@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML unsorted list.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML unsorted list.
  */
 class OlTag extends UlTag
 {
@@ -13,8 +13,8 @@ class OlTag extends UlTag
     /**
      * Vytvori OL container.
      *
-     * @param mixed $ulContents položky seznamu
-     * @param array $properties parametry tagu
+     * @param mixed $ulContents items included
+     * @param array $properties ol tag properties
      */
     public function __construct($ulContents = null, $properties = [])
     {

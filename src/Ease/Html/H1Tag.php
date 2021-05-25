@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML major heading tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML major heading tag.
  */
 class H1Tag extends PairTag
 {
 
     /**
-     * Simple H1 Tag.
+     * H1 Tag.
      *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
+     * @param mixed $content    inserted content
+     * @param array $properties h1 tag propoerties
      */
     public function __construct($content = null, $properties = [])
     {

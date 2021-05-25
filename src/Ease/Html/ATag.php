@@ -3,19 +3,19 @@
 namespace Ease\Html;
 
 /**
- * HTML hyperling class.
+ *   @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com> 
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML hyperlink class.
  */
 class ATag extends PairTag
 {
 
     /**
-     * zobrazí HTML odkaz.
+     * displays HTML link.
      *
-     * @param string|null $href       url odkazu
-     * @param mixed       $contents   vkládaný obsah
-     * @param array       $properties parametry tagu
+     * @param string|null $href       link url
+     * @param mixed       $contents   inserted content
+     * @param array       $properties A tag properties
      */
     public function __construct($href, $contents = null, $properties = [])
     {

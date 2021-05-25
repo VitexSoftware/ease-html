@@ -2,16 +2,15 @@
 
 namespace Ease\Html;
 
-/**
- * Send button
- * Odesílací tlačítko.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Send button
  */
 class SubmitButton extends InputTag
 {
     /**
-     * Popisek odesílacího tlačítka.
+     * Button label.
      *
      * @var string
      */
@@ -21,10 +20,10 @@ class SubmitButton extends InputTag
      * Odesílací tlačítko
      * <input type="submit" name="$label" value="$value" title="$Hint">.
      *
-     * @param string $label    nápis na tlačítku
-     * @param string $value    odesílaná hodnota
-     * @param string $hint     tip při najetí myší
-     * @param string $classCss css třída pro tag tlačítka
+     * @param string $label     button label
+     * @param string $value     sent value
+     * @param string $hint      mouseover tip
+     * @param string $classCss  css class for tag buttons
      */
     public function __construct($label, $value = null, $hint = null,
                                 $classCss = null)
@@ -48,15 +47,15 @@ class SubmitButton extends InputTag
     }
 
     /**
-     * Nastaví hodnotu.
+     * Sets value.
      *
-     * @param string $value     vracená hodnota tagu
-     * @param bool   $Automatic Hack pro zachování labelů při plnění formuláře
+     * @param string $value     return tag value
+     * @param bool   $Automatic Hack for keeping the lables while filling the form
      */
     public function setValue($value, $Automatic = false)
     {
         if (!$Automatic) {
-            //FillUp nenastavuje Labely tlačítek
+            //FillUp sets up button lables
             parent::SetValue($value);
         }
     }

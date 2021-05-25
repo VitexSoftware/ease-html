@@ -2,20 +2,22 @@
 
 namespace Ease\Html;
 
-/**
- * Pojem definice.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * Term definition.
  */
 class DtTag extends PairTag
 {
 
     /**
-     * Pojem definice.
+     * Term definition.
      *
-     * @param string|mixed $content       název pojmu / klíčové slovo
-     * @param array        $tagProperties
+     * @param string|mixed  $content     term name / keyword
+     * @param array         $properties  dt tag properties   
      */
-    public function __construct($content = null, $tagProperties = null)
+    public function __construct($content = null, $properties = [])
     {
-        parent::__construct('dt', $tagProperties, $content);
+        parent::__construct('dt', $properties, $content);
     }
 }

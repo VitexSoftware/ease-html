@@ -2,19 +2,21 @@
 
 namespace Ease\Html;
 
-/**
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
  * HTML unsorted list.
  *
- * @author Vitex <vitex@hippy.cz>
+ *  
  */
 class UlTag extends PairTag
 {
 
     /**
-     * Vytvori UL container.
+     * Creates UL container.
      *
-     * @param mixed $ulContents položky seznamu
-     * @param array $properties parametry tagu
+     * @param mixed $ulContents list items
+     * @param array $properties ul tag properties
      */
     public function __construct($ulContents = null, $properties = [])
     {
@@ -22,9 +24,9 @@ class UlTag extends PairTag
     }
 
     /**
-     * Vloží pole elementů.
+     * Inserts an array of elements.
      *
-     * @param array $itemsArray pole hodnot nebo EaseObjektů s metodou draw()
+     * @param array $itemsArray field of values or EaseObjektů with draw() method.
      */
     public function addItems($itemsArray)
     {
@@ -39,8 +41,8 @@ class UlTag extends PairTag
     /**
      * Every item id added in LiTag envelope.
      *
-     * @param mixed  $pageItem   obsah vkládaný jako položka výčtu
-     * @param array $properties Vlastnosti LI tagu
+     * @param mixed  $pageItem      content inserted as an enumeration item
+     * @param array $properties     ul tag properties
      *
      * @return mixed
      */

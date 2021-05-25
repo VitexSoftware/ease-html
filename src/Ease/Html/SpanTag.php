@@ -2,22 +2,22 @@
 
 namespace Ease\Html;
 
-/**
- * HTML span tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML span tag.
  */
 class SpanTag extends PairTag
 {
 
-    /**
-     * <span> tag.
-     *
-     * @param mixed $content    content entered
-     * @param array $properties tag parameters
-     */
-    public function __construct($content = null, $properties = [])
-    {
-        parent::__construct('span', $properties, $content);
-    }
+	/**
+	 * <span> tag.
+	 *
+	 * @param mixed $content    content entered
+	 * @param array $properties span tag properties
+	 */
+	public function __construct($content = null, $properties = [])
+	{
+		parent::__construct('span', $properties, $content);
+	}
 }

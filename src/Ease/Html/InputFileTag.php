@@ -2,20 +2,20 @@
 
 namespace Ease\Html;
 
-/**
- * Vstupní prvek pro odeslání souboru.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Input element for sending a file.
  */
 class InputFileTag extends InputTag
 {
 
     /**
-     * Vstupní box pro volbu souboru.
+     * Input box for file selection.
      *
-     * @param string $name  jméno tagu
-     * @param string $value předvolená hodnota
-     * @param array  $properties 
+     * @param string $name          tag name
+     * @param string $value         pre-defined value
+     * @param array  $properties    input file tag properties
      */
     public function __construct($name, $value = null, array $properties = [])
     {

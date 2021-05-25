@@ -2,20 +2,20 @@
 
 namespace Ease\Html;
 
-/**
- * Zobrazí input text tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Displays the input text tag.
  */
 class InputTextTag extends InputTag
 {
 
     /**
-     * Zobrazí input text tag.
+     * Displays the input text tag.
      *
-     * @param string $name       jméno
-     * @param string $value      předvolená hodnota
-     * @param array  $properties dodatečné vlastnosti tagu
+     * @param string $name       tag name
+     * @param string $value      intial value
+     * @param array  $properties additional input tel input text tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {

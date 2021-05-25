@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 input datetime-local tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 input datetime-local tag.
  */
 class InputDateTimeLocalTag extends InputTag
 {
@@ -16,9 +16,11 @@ class InputDateTimeLocalTag extends InputTag
      *
      * @param string           $name       name
      * @param string|\DateTime $value      initial value as string or DateTime 
-     * @param array            $properties additional properties
+     * @param array            $properties additional input date time local properties
      */
-    public function __construct($name, /** @scrutinizer ignore-type */ $value = null, $properties = [])
+    public function __construct($name,
+    /** @scrutinizer ignore-type */
+    $value = null, $properties = [])
     {
         $properties['type']  = 'datetime-local';
         $properties['value'] = is_object($value) ? $value->format('c') : $value;

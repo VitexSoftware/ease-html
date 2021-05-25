@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML list item tag class.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML list item tag class.
  */
 class LiTag extends PairTag
 {
@@ -13,8 +13,8 @@ class LiTag extends PairTag
     /**
      * Simple LI tag.
      *
-     * @param mixed $liContents obsah položky seznamu
-     * @param array $properties parametry LI tagu
+     * @param mixed $liContents list item content
+     * @param array $properties Li tag properties
      */
     public function __construct($liContents = null, $properties = [])
     {

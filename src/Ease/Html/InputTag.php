@@ -2,26 +2,26 @@
 
 namespace Ease\Html;
 
-/**
- * Obecný input TAG.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * General input TAG.
  */
 class InputTag extends Tag
 {
     /**
-     * Nastavovat automaticky jméno tagu ?
+     * Sets tag name automatically
      *
      * @author Vítězslav Dvořák <vitex@hippy.cz>
      */
     public $setName = true;
 
     /**
-     * Obecný input TAG.
+     * General input TAG.
      *
-     * @param string            $name       jméno tagu
-     * @param string            $value      vracená hodnota
-     * @param array             $properties vlastnosti tagu
+     * @param string            $name       tag name
+     * @param string            $value      return value
+     * @param array             $properties additional input tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {
@@ -36,9 +36,9 @@ class InputTag extends Tag
     }
 
     /**
-     * Nastaví hodnotu vstupního políčka.
+     * Sets the value of the input field.
      *
-     * @param string $value vracená hodnota
+     * @param string $value return value
      */
     public function setValue($value)
     {
@@ -46,7 +46,7 @@ class InputTag extends Tag
     }
 
     /**
-     * Vrací hodnotu vstupního políčka.
+     * Returns the value of an input field.
      *
      * @return string $value
      */

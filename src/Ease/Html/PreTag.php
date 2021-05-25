@@ -2,20 +2,22 @@
 
 namespace Ease\Html;
 
-/**
- * Preformátovaný text.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * Reformatted text.
  */
 class PreTag extends PairTag
 {
 
     /**
-     * Preformátovaný text.
+     * Reformatted text.
      *
-     * @param string|mixed $content
-     * @param array        $tagProperties
+     * @param string|mixed $content     tag content
+     * @param array        $properties  pre tag properties
      */
-    public function __construct($content = null, $tagProperties = null)
+    public function __construct($content = null, $properties = null)
     {
-        parent::__construct('pre', $tagProperties, $content);
+        parent::__construct('pre', $properties, $content);
     }
 }

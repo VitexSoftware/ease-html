@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 Article tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 Article tag.
  */
 class AudioTag extends PairTag
 {
 
     /**
-     * Defines sound content
+     * Defines audio content
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties audio tag properties
      */
     public function __construct($content = null, $properties = [])
     {

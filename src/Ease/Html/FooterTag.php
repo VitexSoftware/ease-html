@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 footer tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 footer tag.
  */
 class FooterTag extends PairTag
 {
 
     /**
-     * Defines a footer for a document or section
+     * Defines a footer for a document or section.
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties footer tag properties
      */
     public function __construct($content = null, $properties = [])
     {

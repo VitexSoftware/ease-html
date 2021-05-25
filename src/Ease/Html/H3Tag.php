@@ -1,20 +1,20 @@
-<?php
+p<?php
 
 namespace Ease\Html;
 
-/**
- * HTML H3 tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML H3 tag. 
  */
 class H3Tag extends PairTag
 {
 
     /**
-     * Simple H3 tag.
+     * H3 tag.
      *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
+     * @param mixed $content    inserted content
+     * @param array $properties h3 tag propoerties
      */
     public function __construct($content = null, $properties = [])
     {

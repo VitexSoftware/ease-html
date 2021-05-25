@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 nav tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 nav tag.
  */
 class NavTag extends PairTag
 {
@@ -14,7 +14,7 @@ class NavTag extends PairTag
      * Defines navigation links
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties nav tag properties
      */
     public function __construct($content = null, $properties = [])
     {

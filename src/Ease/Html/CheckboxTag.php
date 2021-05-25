@@ -2,8 +2,8 @@
 
 namespace Ease\Html;
 
-/**
- * Zobrazí tag pro chcekbox.
+/** @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com> 
+ * Displays checkbox tag.
  *
  * @author Vítězslav Dvořák <vitex@hippy.cz>
  */
@@ -11,12 +11,12 @@ class CheckboxTag extends InputTag
 {
 
     /**
-     * Zobrazuje HTML Checkbox.
+     * Displays HTML Checkbox.
      *
-     * @param string $name       jméno tagu
-     * @param bool   $checked    stav checkboxu
-     * @param string $value      vracená hodnota checkboxu
-     * @param array  $properties parametry tagu
+     * @param string $name       tag name
+     * @param bool   $checked    checkbox state
+     * @param string $value      returns checkbox value
+     * @param array  $properties checkbox tag properties
      */
     public function __construct(string $name, bool $checked = false, string $value = null,
                                 $properties = [])
@@ -36,9 +36,9 @@ class CheckboxTag extends InputTag
     }
 
     /**
-     * Nastaví zaškrtnutí.
+     * Check mark settings.
      *
-     * @param bool $value nastavuje parametr "checked" tagu
+     * @param bool $value sets tag parameter to "checked"
      */
     public function setValue($value = true)
     {
@@ -50,12 +50,12 @@ class CheckboxTag extends InputTag
     }
 
     /**
-     * Obtain curent checkbox state
+     * Obtains curent checkbox state
      *
      * @return boolean $value
      */
     public function getValue()
     {
-        return !empty($this->getTagProperty('checked'));
+        return $this->getTagProperty('checked') == 'true';
     }
 }

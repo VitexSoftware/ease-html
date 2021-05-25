@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML em tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML em tag.
  */
 class EmTag extends PairTag
 {
 
     /**
-     * Tag kurzívu.
+     * emphasis Tag.
      *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
+     * @param mixed $content    inserted content
+     * @param array $properties em tag properties
      */
     public function __construct($content = null, $properties = [])
     {

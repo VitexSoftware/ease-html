@@ -2,27 +2,26 @@
 
 namespace Ease\Html;
 
-/**
- * Show search input field
- * Zobrazí vyhledávací poloíčko.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Show search input field.
  */
 class InputSearchTag extends InputTag
 {
     /**
-     * URL zdroje dat pro hinter.
+     * URL data source for the hinter.
      *
      * @var string
      */
     public $dataSourceURL = null;
 
     /**
-     * Zobrazí tag pro vyhledávací box.
+     *Displays a tag for the search box.
      *
-     * @param string $name       jméno
-     * @param string $value      předvolená hodnota
-     * @param array  $properties dodatečné vlastnosti tagu
+     * @param string $name       tag name
+     * @param string $value      initial value
+     * @param array  $properties additional input search tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {
@@ -35,5 +34,4 @@ class InputSearchTag extends InputTag
         }
         parent::__construct($name, $value, $properties);
     }
-
 }

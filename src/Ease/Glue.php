@@ -1,21 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace Ease;
 
 /**
  *
- * @author Vítězslav Dvořák <info@vitexsoftware.cz>
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  */
 trait Glue {
 
     /**
-     * Pole objektů a fragmentů k vykreslení.
      * Array of objects and fragments to draw
      *
      * @var array
@@ -23,7 +16,7 @@ trait Glue {
     public $pageParts = [];
 
     /**
-     * Byla jiz stranka vykreslena.
+     * Has the page already been rendered ?
      *
      * @var bool
      */
@@ -31,7 +24,6 @@ trait Glue {
 
     /**
      * Is class finalized ?
-     * Prošel už objekt finalizací ?
      *
      * @var bool
      */
@@ -44,10 +36,10 @@ trait Glue {
     private $embedName = null;
 
     /**
-     * Vloží další element do objektu.
+     * Inserts another element into the object.
      *
-     * @param Embedable|string $pageItem     hodnota nebo EaseObjekt s metodou draw()
-     * @param Embedable        $context      Objekt do nějž jsou prvky/položky vkládány
+     * @param Embedable|string $pageItem     value or EaseObject with draw () method
+     * @param Embedable        $context      Object into which elements / items are inserted
      *
      * @return mixed Odkaz na vložený objekt
      */

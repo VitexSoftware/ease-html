@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 section tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 section tag.
  */
 class SectionTag extends PairTag
 {
@@ -14,7 +14,7 @@ class SectionTag extends PairTag
      * Defines a section in a document
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties section tag properties
      */
     public function __construct($content = null, $properties = [])
     {

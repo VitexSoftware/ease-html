@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 datalist tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 datalist tag.
  */
 class DatalistTag extends PairTag
 {
@@ -14,7 +14,7 @@ class DatalistTag extends PairTag
      * Specifies a list of pre-defined options for input controls
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties data list tag properties
      */
     public function __construct($content = null, $properties = [])
     {

@@ -2,312 +2,317 @@
 
 namespace Ease\Html;
 
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>*/
+
 use Ease\Document;
 use Ease\Functions;
-
-/**
+/*
  * Common HTML tag class.
- *
- * @author     Vitex <vitex@hippy.cz>
  */
+
 class Tag extends Document
 {
-    /**
-     * Jméno tagu - je použit i jako jméno objektu.
-     *
-     * @var string
-     */
-    public $tagName = null;
+	/**
+	 * Tag name - is also used as an object name.
+	 *
+	 * @var string
+	 */
+	public $tagName = null;
 
-    /**
-     * Typ tagu - např A či STRONG.
-     *
-     * @var string
-     */
-    private $tagType = null;
+	/**
+	 * Tag type - e.g. A or STRONG.
+	 *
+	 * @var string
+	 */
+	private $tagType = null;
 
-    /**
-     * Pole vlastností tagu.
-     *
-     * @var array
-     */
-    public $tagProperties = [];
+	/**
+	 * Tag property fields.
+	 *
+	 * @var array
+	 */
+	public $properties = [];
 
-    /**
-     * pole ze kterého se rendruje obsah STYLE tagu.
-     *
-     * @var array
-     */
-    public $cssProperties = null;
+	/**
+	 * the field from which the contents of the STYLE tag are rendered.
+	 *
+	 * @var array
+	 */
+	public $cssProperties = null;
 
-    /**
-     * Nelogovat události HTML objektů.
-     *
-     * @var string
-     */
-    public $logType = 'none';
+	/**
+	 * Do not log HTML object events.
+	 *
+	 * @var string
+	 */
+	public $logType = 'none';
 
-    /**
-     * Koncové lomítko pro xhtml.
-     *
-     * @var string
-     */
-    public $trail = ' /';
+	/**
+	 * Trailing for xhtml.
+	 *
+	 * @var string
+	 */
+	public $trail = ' /';
 
-    /**
-     * Má si objekt automaticky plnit vlastnost name ?
-     */
-    public $setName = false;
+	/**
+	 * Should the object automatically fulfill the name property?
+	 */
+	public $setName = false;
 
-    /**
-     * Objekt pro vykreslení obecného nepárového html tagu.
-     *
-     * @param string  $tagType       typ tagu
-     * @param array   $tagProperties parametry tagu
-     */
-    public function __construct($tagType = null, $tagProperties = null)
-    {
-        $this->setTagType(is_null($tagType) ? $this->getTagType() : $tagType);
-        parent::__construct();
-        if ($tagProperties) {
-            $this->setTagProperties($tagProperties);
-        }
-        $this->setObjectName();
-    }
+	/**
+	 * Object for rendering a general unpaired html tag.
+	 *
+	 * @param string  $tagType      tag type
+	 * @param array   $properties   tag properties
+	 */
+	public function __construct($tagType = null, $properties = null)
+	{
+		$this->setTagType(is_null($tagType) ? $this->getTagType() : $tagType);
+		parent::__construct();
+		if ($properties) {
+			$this->setTagProperties($properties);
+		}
+		$this->setObjectName();
+	}
 
-    /**
-     * Set ObjectName
-     * Nastaví jméno objektu.
-     *
-     * @param string $objectName jméno objektu
-     *
-     * @return string New object name
-     */
-    public function setObjectName($objectName = null)
-    {
-        if (is_null($objectName) === false) {
-            $objName = parent::setObjectName($objectName);
-        } else {
-            if (empty($this->tagName) === false) {
-                $objName = parent::setObjectName(get_class($this).'@'.$this->tagName);
-            } else {
-                if (empty($this->tagType) === false) {
-                    $objName = parent::setObjectName(get_class($this).'@'.$this->tagType);
-                } else {
-                    $objName = parent::setObjectName();
-                }
-            }
-        }
-        return $objName;
-    }
+	/**
+	 * Sets ObjectName
+	 *
+	 * @param string $objectName object name
+	 *
+	 * @return string New object name
+	 */
+	public function setObjectName($objectName = null)
+	{
+		if (is_null($objectName) === false) {
+			$objName = parent::setObjectName($objectName);
+		} else {
+			if (empty($this->tagName) === false) {
+				$objName = parent::setObjectName(get_class($this) . '@' . $this->tagName);
+			} else {
+				if (empty($this->tagType) === false) {
+					$objName = parent::setObjectName(get_class($this) . '@' . $this->tagType);
+				} else {
+					$objName = parent::setObjectName();
+				}
+			}
+		}
+		return $objName;
+	}
 
-    /**
-     * Nastaví jméno tagu. Unused ...
-     *
-     * @param string $tagName jméno tagu do vlastnosti NAME
-     */
-    public function setTagName($tagName)
-    {
-        $this->tagName = $tagName;
-        if ($this->setName) {
-            $this->tagProperties['name'] = $tagName;
-        }
-        $this->setObjectName();
-    }
+	/**
+	 * Name tag settings. Unused ...
+	 *
+	 * @param string $tagName he name of the tag in the property NAME
+	 */
+	public function setTagName($tagName)
+	{
+		$this->tagName = $tagName;
+		if ($this->setName) {
+			$this->tagProperties['name'] = $tagName;
+		}
+		$this->setObjectName();
+	}
 
-    /**
-     * Returns name of tag.
-     *
-     * @return string
-     */
-    public function getTagName()
-    {
-        return $this->setName ? $this->getTagProperty('name') : $this->tagName;
-    }
+	/**
+	 * Returns the name of the tag.
+	 *
+	 * @return string
+	 */
+	public function getTagName()
+	{
+		return $this->setName ? $this->getTagProperty('name') : $this->tagName;
+	}
 
-    /**
-     * Nastaví typ tagu.
-     *
-     * @param string $tagType typ tagu - např. img
-     */
-    public function setTagType($tagType)
-    {
-        $this->tagType = $tagType;
-    }
+	/**
+	 * Sets up tag type.
+	 *
+	 * @param string $tagType tag type e.g. img
+	 */
+	public function setTagType($tagType)
+	{
+		$this->tagType = $tagType;
+	}
 
-    /**
-     * Vrací typ tagu.
-     *
-     * @return string typ tagu - např. img
-     */
-    public function getTagType()
-    {
-        return $this->tagType;
-    }
+	/**
+	 * Returns tag type.
+	 *
+	 * @return string tag type e.g. img
+	 */
+	public function getTagType()
+	{
+		return $this->tagType;
+	}
 
-    /**
-     * Nastaví classu tagu.
-     *
-     * @param string $className jméno css třídy
-     */
-    public function setTagClass($className)
-    {
-        $this->setTagProperties(['class' => $className]);
-    }
+	/**
+	 * Sets tag class.
+	 *
+	 * @param string $className jméno css třídy
+	 */
+	public function setTagClass($className)
+	{
+		$this->setTagProperties(['class' => $className]);
+	}
 
-    /**
-     * Přidá classu tagu.
-     *
-     * @param string $className jméno css třídy
-     */
-    public function addTagClass($className)
-    {
-        $this->setTagClass(trim($this->getTagClass().' '.$className));
-    }
+	/**
+	 * Adds tag class.
+	 *
+	 * @param string $className jméno css třídy
+	 */
+	public function addTagClass($className)
+	{
+		$this->setTagClass(trim($this->getTagClass() . ' ' . $className));
+	}
 
-    /**
-     * Vrací css classu tagu.
-     */
-    public function getTagClass()
-    {
-        return $this->getTagProperty('class');
-    }
+	/**
+	 * Returns tags css class.
+	 */
+	public function getTagClass()
+	{
+		return $this->getTagProperty('class');
+	}
 
-    /**
-     * Nastaví tagu zadane id, nebo vygenerované náhodné.
-     *
-     * @param string $tagID #ID html tagu pro JavaScript a Css
-     *
-     * @return string nastavené ID
-     */
-    public function setTagID($tagID = null)
-    {
-        $this->setTagProperties(['id' => is_null($tagID) ? Functions::randomString()
-                    : $tagID]);
-        return $this->getTagID();
-    }
+	/**
+	 * Sets the tag specified by the id, or randomly generated.
+	 *
+	 * @param string $tagID html tag #ID for JavaScript a Css
+	 *
+	 * @return string the set ID
+	 */
+	public function setTagID($tagID = null)
+	{
+		$this->setTagProperties(['id' => is_null($tagID) ? Functions::randomString()
+			: $tagID]);
+		return $this->getTagID();
+	}
 
-    /**
-     * Vrací ID html tagu.
-     *
-     * @return string
-     */
-    public function getTagID()
-    {
-        return $this->getTagProperty('id');
-    }
+	/**
+	 * Returns taga html ID.
+	 *
+	 * @return string
+	 */
+	public function getTagID()
+	{
+		return $this->getTagProperty('id');
+	}
 
-    /**
-     * Set Tag property to given value
-     * 
-     * @param string $name
-     * @param string $value
-     * 
-     * @return boolean
-     */
-    public function setTagProperty($name, $value)
-    {
-        $this->tagProperties[$name] = $value;
-        return true;
-    }
+	/**
+	 * Sets tag property to given value.
+	 * 
+	 * @param string $name
+	 * @param string $value
+	 * 
+	 * @return boolean
+	 */
+	public function setTagProperty($name, $value)
+	{
+		$this->tagProperties[$name] = $value;
+		return true;
+	}
 
-    /**
-     * Returns property tag value.
-     *
-     * @param string $propertyName název vlastnosti tagu. např. "src" u obrázku
-     *
-     * @return string current tag property value
-     */
-    public function getTagProperty($propertyName)
-    {
-        return array_key_exists($propertyName, $this->tagProperties) ? $this->tagProperties[$propertyName]
-                : null;
-    }
+	/**
+	 * Returns property tag value.
+	 *
+	 * @param string $propertyName the name of the tag property. eg "src" next to the image
+	 *
+	 * @return string current tag property value
+	 */
+	public function getTagProperty($propertyName)
+	{
+		return array_key_exists($propertyName, $this->tagProperties) ? $this->tagProperties[$propertyName]
+			: null;
+	}
 
-    /**
-     * Nastaví paramatry tagu.
-     *
-     * @param array $tagProperties asociativní pole parametrů tagu
-     * 
-     * @return boolean operation success
-     */
-    public function setTagProperties(array $tagProperties)
-    {
-        if (isset($tagProperties['id'])) {
-            $tagProperties['id'] = preg_replace('/[^A-Za-z0-9_\\-]/', '',
-                $tagProperties['id']);
-        }
-        $this->tagProperties = empty($this->tagProperties) ? $tagProperties : array_merge($this->tagProperties,
-                $tagProperties);
+	/**
+	 * Sets tag parameters.
+	 *
+	 * @param array $properties associative array of tag parameters
+	 * 
+	 * @return boolean operation success
+	 */
+	public function setTagProperties(array $properties)
+	{
+		if (isset($properties['id'])) {
+			$properties['id'] = preg_replace(
+				'/[^A-Za-z0-9_\\-]/',
+				'',
+				$properties['id']
+			);
+		}
+		$this->tagProperties = empty($this->tagProperties) ? $properties : array_merge(
+			$this->tagProperties,
+			$properties
+		);
 
-        if (isset($tagProperties['name'])) {
-            $this->setTagName($tagProperties['name']);
-        }
-        return true;
-    }
+		if (isset($properties['name'])) {
+			$this->setTagName($properties['name']);
+		}
+		return true;
+	}
 
-    /**
-     * Vrátí parametry tagu jako řetězec.
-     *
-     * @return string
-     */
-    public function tagPropertiesToString()
-    {
-        $props = [];
-        foreach ($this->tagProperties as $propName => $propValue) {
-            $props[] = is_string($propName) ? $propName.'="'.$propValue.'"' : $propValue;
-        }
-        return implode(' ', $props);
-    }
+	/**
+	 * Returns tag parameters as a string.
+	 *
+	 * @return string
+	 */
+	public function tagPropertiesToString()
+	{
+		$props = [];
+		foreach ($this->tagProperties as $propName => $propValue) {
+			$props[] = is_string($propName) ? $propName . '="' . $propValue . '"' : $propValue;
+		}
+		return implode(' ', $props);
+	}
 
-    /**
-     * Nastaví paramatry Css.
-     *
-     * @param array $cssProperties asociativní pole, nebo CSS definice
-     */
-    public function setTagCss(array $cssProperties)
-    {
-        $this->cssProperties = $cssProperties;
-        $this->setTagProperties(['style' => $this->cssPropertiesToString()]);
-    }
+	/**
+	 * Sets Css parameters.
+	 *
+	 * @param array $cssProperties asociative feild, or CSS definition
+	 */
+	public function setTagCss(array $cssProperties)
+	{
+		$this->cssProperties = $cssProperties;
+		$this->setTagProperties(['style' => $this->cssPropertiesToString()]);
+	}
 
-    /**
-     * Vrátí parametry Cssu jako řetězec.
-     *
-     * @param array|string $cssProperties pole vlastností nebo CSS definice
-     *
-     * @return string
-     */
-    public function cssPropertiesToString($cssProperties = null)
-    {
-        if (!$cssProperties) {
-            $cssProperties = $this->cssProperties;
-        }
-        $cssPropertiesString = ' ';
-        foreach ($cssProperties as $cssPropertyName => $cssPropertiesssPropertyValue) {
-            $cssPropertiesString .= $cssPropertyName.':'.$cssPropertiesssPropertyValue.';';
-        }
-        return trim($cssPropertiesString);
-    }
+	/**
+	 * Returns Css parameters as a string.
+	 *
+	 * @param array|string $cssProperties parameter feild, or CSS definition
+	 *
+	 * @return string
+	 */
+	public function cssPropertiesToString($cssProperties = null)
+	{
+		if (!$cssProperties) {
+			$cssProperties = $this->cssProperties;
+		}
+		$cssPropertiesString = ' ';
+		foreach ($cssProperties as $cssPropertyName => $cssPropertiesssPropertyValue) {
+			$cssPropertiesString .= $cssPropertyName . ':' . $cssPropertiesssPropertyValue . ';';
+		}
+		return trim($cssPropertiesString);
+	}
 
-    /**
-     * Add Css to tag properties.
-     */
-    public function finalize()
-    {
-        if (!empty($this->cssProperties)) {
-            $this->setTagProperties(['style' => $this->cssPropertiesToString()]);
-        }
-        parent::finalize();
-    }
+	/**
+	 * Add Css to tag properties.
+	 */
+	public function finalize()
+	{
+		if (!empty($this->cssProperties)) {
+			$this->setTagProperties(['style' => $this->cssPropertiesToString()]);
+		}
+		parent::finalize();
+	}
 
-    /**
-     * Vykreslí tag.
-     */
-    public function draw()
-    {
-        echo '<'.trim($this->tagType.' '.$this->tagPropertiesToString());
-        echo $this->trail.'>';
-        $this->drawStatus = true;
-    }
+	/**
+	 * Renders tag.
+	 */
+	public function draw()
+	{
+		echo '<' . trim($this->tagType . ' ' . $this->tagPropertiesToString());
+		echo $this->trail . '>';
+		$this->drawStatus = true;
+	}
 }

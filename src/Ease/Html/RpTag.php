@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 rp tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 rp tag.
  */
 class RpTag extends PairTag
 {
@@ -14,7 +14,7 @@ class RpTag extends PairTag
      * Defines what to show in browsers that do not support ruby annotations
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties rp tag properties
      */
     public function __construct($content = null, $properties = [])
     {

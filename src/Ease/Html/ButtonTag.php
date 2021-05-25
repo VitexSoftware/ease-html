@@ -2,20 +2,22 @@
 
 namespace Ease\Html;
 
-/**
- * Html element pro tlačítko.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
+ * Html element for a button.
  */
 class ButtonTag extends PairTag
 {
 
     /**
-     * Html element pro tlačítko.
+     * Html element for a button.
      *
-     * @param string $content       obsah tlačítka
-     * @param array  $tagProperties vlastnosti tagu
+     * @param string $content       button content
+     * @param array  $properties    button tag properties
      */
-    public function __construct($content, $tagProperties = null)
+    public function __construct($content, $properties = [])
     {
-        parent::__construct('button', $tagProperties, $content);
+        parent::__construct('button', $properties, $content);
     }
 }

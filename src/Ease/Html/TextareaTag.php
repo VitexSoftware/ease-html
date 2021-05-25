@@ -2,25 +2,25 @@
 
 namespace Ease\Html;
 
-/**
- * Textové pole.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Text area.
  */
 class TextareaTag extends PairTag
 {
     /**
-     * Odkaz na obsah.
+     * Link to content.
      */
     public $content = null;
     public $setName = true;
 
     /**
-     * Textarea.
+     * Text area.
      *
-     * @param string $name       jméno tagu
-     * @param string $content    obsah textarey
-     * @param array  $properties vlastnosti tagu
+     * @param string $name       tag name
+     * @param string $content    text arrey content
+     * @param array  $properties text area tag properties
      */
     public function __construct($name, $content = '', $properties = [])
     {
@@ -32,9 +32,9 @@ class TextareaTag extends PairTag
     }
 
     /**
-     * Nastaví obsah.
+     * Sets content.
      *
-     * @param string $value hodnota
+     * @param string $value value
      */
     public function setValue($value)
     {

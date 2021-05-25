@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 header tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 header tag.
  */
 class HeaderTag extends PairTag
 {
 
     /**
-     * Defines a header for a document or section
+     * Defines a header for a document or section.
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties header tag properties
      */
     public function __construct($content = null, $properties = [])
     {

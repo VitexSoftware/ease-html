@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * Siple HTML head tag class.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * Siple HTML head tag class.
  */
 class SimpleHeadTag extends PairTag
 {
@@ -18,7 +18,6 @@ class SimpleHeadTag extends PairTag
 
     /**
      * Content Charset
-     * Znaková sada obsahu.
      *
      * @var string
      */
@@ -27,8 +26,8 @@ class SimpleHeadTag extends PairTag
     /**
      * head tag with defined meta http-equiv content type.
      *
-     * @param mixed $contents   vkládaný obsah
-     * @param array $properties parametry tagu
+     * @param mixed $contents   inserted content
+     * @param array $properties simple head tag properties
      */
     public function __construct($contents = null, $properties = [])
     {

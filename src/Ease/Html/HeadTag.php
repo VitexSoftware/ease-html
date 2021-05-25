@@ -2,10 +2,11 @@
 
 namespace Ease\Html;
 
-/**
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
+ *
  * HTML webPage head class.
  *
- * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  */
 class HeadTag extends PairTag
 {
@@ -25,7 +26,6 @@ class HeadTag extends PairTag
 
     /**
      * Content Charset
-     * Znaková sada obsahu.
      *
      * @var string
      */
@@ -34,7 +34,7 @@ class HeadTag extends PairTag
     /**
      * Html HEAD tag with basic contents and skin support.
      *
-     * @param mixed $content vkládaný obsah
+     * @param mixed $content        inserted content
      */
     public function __construct($content = null)
     {
@@ -45,9 +45,9 @@ class HeadTag extends PairTag
     /**
      * Change name directly to head.
      *
-     * @param string $objectName jméno objektu
+     * @param string $objectName    object name
      * 
-     * @return string final object name
+     * @return string               final object name
      */
     public function setObjectName($objectName = null)
     {
@@ -55,9 +55,9 @@ class HeadTag extends PairTag
     }
 
     /**
-     * Vykreslení bloku scriptu.
+     * Render a script block.
      *
-     * @param string $javaScript vkládaný skript
+     * @param string $javaScript    inserted script
      *
      * @return string
      */
@@ -73,7 +73,7 @@ class HeadTag extends PairTag
     }
 
     /**
-     * hadle page title
+     * Hadle page title.
      */
     public function finalize()
     {
@@ -158,7 +158,7 @@ class HeadTag extends PairTag
     }
 
     /**
-     * Vykreslí hlavičku HTML stránky.
+     * Renders the header of the HTML page.
      */
     public function draw()
     {

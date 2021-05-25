@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * Vstupní pole čísla.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Vstupní pole čísla.
  */
 class InputNumberTag extends InputTag
 {
@@ -14,9 +14,9 @@ class InputNumberTag extends InputTag
      * The <input type="number"> defines a numeric input field.
      * You can also set restrictions on what numbers are accepted.
      *
-     * @param string $name       name
+     * @param string $name       tag name
      * @param string $value      initial value
-     * @param array  $properties additional tag properties
+     * @param array  $properties additional input number tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {

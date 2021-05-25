@@ -2,25 +2,25 @@
 
 namespace Ease\Html;
 
-/**
- * Položka seznamu.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * List item.
  */
 class OptionTag extends PairTag
 {
     /**
-     * Hodnota.
+     * Value.
      *
      * @var string
      */
     public $value = null;
 
     /**
-     * Tag položky rozbalovací nabídky.
+     * Drop-down menu item tag.
      *
      * @param string|mixed $content text volby
-     * @param string|int   $value   vracená hodnota
+     * @param string|int   $value   return value
      */
     public function __construct($content, $value = null)
     {
@@ -30,7 +30,7 @@ class OptionTag extends PairTag
     }
 
     /**
-     * Nastaví předvolenou položku.
+     * Sets the default item.
      * 
      * @return boolean
      */
@@ -40,9 +40,9 @@ class OptionTag extends PairTag
     }
 
     /**
-     * Nastaví hodnotu.
+     * Sets value.
      *
-     * @param int|string $value vracená hodnota
+     * @param int|string $value return value
      */
     public function setValue($value)
     {

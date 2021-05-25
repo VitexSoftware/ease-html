@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 svg tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 svg tag.
  */
 class SvgTag extends PairTag
 {
 
     /**
-     * Draw scalable vector graphics
+     * Render scalable vector graphics
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties tag svg propertiess
      */
     public function __construct($content = null, $properties = [])
     {

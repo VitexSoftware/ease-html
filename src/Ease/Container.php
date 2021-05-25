@@ -2,239 +2,252 @@
 
 /**
  * Object able to contain other object in int.
- * Objekt schopný do sebe pojmou jiné objekty.
  *
- * @author     Vitex <vitex@hippy.cz>
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  * @copyright  2009-2019 Vitex@hippy.cz (G)
  */
 
 namespace Ease;
 
-class Container extends Sand implements Embedable {
+class Container extends Sand implements Embedable
+{
 
-    use Glue;
+	use Glue;
 
-    /**
-     * Library version
-     * @var string 
-     */
-    public static $libVersion = 1.0;
+	/**
+	 * Library version
+	 * @var string 
+	 */
+	public static $libVersion = 1.0;
 
-    /**
-     * Kontejner, který může obsahovat vložené objekty, které se vykreslí.
-     *
-     * @param Embedable|string $initialContent hodnota nebo EaseObjekt s metodou draw()
-     */
-    public function __construct($initialContent = null) {
-        if (!empty($initialContent)) {
-            $this->addItem($initialContent);
-        }
-    }
+	/**
+	 * A container that can contain embedded objects that are rendered.
+	 *
+	 * @param Embedable|string $initialContent value or EaseObject with draw () method
+	 */
+	public function __construct($initialContent = null)
+	{
+		if (!empty($initialContent)) {
+			$this->addItem($initialContent);
+		}
+	}
 
-    /**
-     * Vloží jako první element do objektu.
-     *
-     * @param mixed  $pageItem     hodnota nebo EaseObjekt s metodou draw()
-     * @param string $pageItemName Pod tímto jménem je objekt vkládán do stromu
-     *
-     * @return mixed Odkaz na vložený objekt
-     */
-    public function &addAsFirst($pageItem, $pageItemName = null) {
-        $swap = $this->pageParts;
-        $this->emptyContents();
-        $itemPointer = $this->addItem($pageItem);
-        $this->addItems($swap);
-        return $itemPointer;
-    }
+	/**
+	 * Inserts as the first element in the object.
+	 *
+	 * @param mixed  $pageItem     value or EaseObject with draw () method
+	 * @param string $pageItemName Under this name, object is inserted into the tree
+	 *
+	 * @return mixed A link to the embedded object
+	 */
+	public function &addAsFirst($pageItem, $pageItemName = null)
+	{
+		$swap = $this->pageParts;
+		$this->emptyContents();
+		$itemPointer = $this->addItem($pageItem);
+		$this->addItems($swap);
+		return $itemPointer;
+	}
 
-    /**
-     * Umožní již vloženému objektu se odstranit ze stromu k vykreslení.
-     */
-    public function suicide() {
-        if (isset($this->parentObject) && isset($this->parentObject->pageParts[$this->embedName])) {
-            unset($this->parentObject->pageParts[$this->embedName]);
+	/**
+	 * Allows an already inserted object to be removed from the tree for rendering.
+	 */
+	public function suicide()
+	{
+		if (isset($this->parentObject) && isset($this->parentObject->pageParts[$this->embedName])) {
+			unset($this->parentObject->pageParts[$this->embedName]);
 
-            return true;
-        } else {
-            return false;
-        }
-    }
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-    /**
-     * Vrací počet vložených položek.
-     * Obtain number of enclosed items in current or given object.
-     *
-     * @return int nuber of parts enclosed
-     */
-    public function getItemsCount() {
-        return count($this->pageParts);
-    }
+	/**
+	 * Returns number of enclosed items in current or given object.
+	 *
+	 * @return int number of parts enclosed
+	 */
+	public function getItemsCount()
+	{
+		return count($this->pageParts);
+	}
 
-    /**
-     * Vloží další element za stávající.
-     *
-     * @param mixed $pageItem hodnota nebo EaseObjekt s metodou draw()
-     *
-     * @return Embedable|string Odkaz na vložený objekt
-     */
-    public function &addNextTo($pageItem) {
-        $itemPointer = $this->parentObject->addItem($pageItem);
+	/**
+	 * Inserts another element after the existing one.
+	 *
+	 * @param mixed $pageItem value or EaseObject with draw () method
+	 *
+	 * @return Embedable|string A link to the embedded object.
+	 */
+	public function &addNextTo($pageItem)
+	{
+		$itemPointer = $this->parentObject->addItem($pageItem);
 
-        return $itemPointer;
-    }
+		return $itemPointer;
+	}
 
-    /**
-     * Vrací odkaz na poslední vloženou položku.
-     *
-     * @return Brick|mixed
-     */
-    public function &lastItem() {
-        $lastPart = empty($this->pageParts) ? null : end($this->pageParts);
-        return $lastPart;
-    }
+	/**
+	 * Vrací odkaz na poslední vloženou položku.
+	 *
+	 * @return Brick|mixed
+	 */
+	public function &lastItem()
+	{
+		$lastPart = empty($this->pageParts) ? null : end($this->pageParts);
+		return $lastPart;
+	}
 
-    /**
-     * Přidá položku do poslední vložené položky.
-     *
-     * @param object $pageItem hodnota nebo EaseObjekt s metodou draw()
-     *
-     * @return Container|null success
-     */
-    public function addToLastItem($pageItem) {
-        return $this->isEmpty() ? null : end($this->pageParts)->addItem($pageItem);
-    }
+	/**
+	 * Adds an item to the last inserted item.
+	 *
+	 * @param object $pageItem value or EaseObject with draw () method
+	 *
+	 * @return Container|null success
+	 */
+	public function addToLastItem($pageItem)
+	{
+		return $this->isEmpty() ? null : end($this->pageParts)->addItem($pageItem);
+	}
 
-    /**
-     * Vrací první vloženou položku.
-     */
-    public function getFirstPart() {
-        return $this->isEmpty() ? null : reset($this->pageParts);
-    }
+	/**
+	 * Returns the first inserted item.
+	 */
+	public function getFirstPart()
+	{
+		return $this->isEmpty() ? null : reset($this->pageParts);
+	}
 
-    /**
-     * Insert an array of elemnts
-     * Vloží pole elementů.
-     *
-     * @param array $itemsArray pole hodnot nebo EaseObjektů s metodou draw()
-     */
-    public function addItems($itemsArray) {
-        $itemsAdded = [];
-        foreach ($itemsArray as $itemID => $item) {
-            $itemsAdded[$itemID] = $this->addItem($item);
-        }
+	/**
+	 * Insert an array of elemnts
+	 *
+	 * @param array $itemsArray value field or EaseObject with draw () method
+	 */
+	public function addItems($itemsArray)
+	{
+		$itemsAdded = [];
+		foreach ($itemsArray as $itemID => $item) {
+			$itemsAdded[$itemID] = $this->addItem($item);
+		}
 
-        return $itemsAdded;
-    }
+		return $itemsAdded;
+	}
 
-    /**
-     * Vyprázní obsah objektu.
-     * Empty container contents
-     */
-    public function emptyContents() {
-        $this->pageParts = [];
-    }
+	/**
+	 * Empty container contents
+	 */
+	public function emptyContents()
+	{
+		$this->pageParts = [];
+	}
 
-    /**
-     * Contentets
-     * 
-     * @return mixed
-     */
-    public function getContents() {
-        return $this->pageParts;
-    }
+	/**
+	 * Contentets
+	 * 
+	 * @return mixed
+	 */
+	public function getContents()
+	{
+		return $this->pageParts;
+	}
 
-    /**
-     * Projde rekurzivně všechny vložené objekty a zavolá jeich draw().
-     */
-    public function drawAllContents() {
-        if (!empty($this->pageParts)) {
-            foreach ($this->pageParts as $part) {
-                if (is_object($part) && method_exists($part, 'draw')) {
-                    $part->draw();
-                } else {
-                    echo $part;
-                }
-            }
-        }
-        $this->drawStatus = true;
-    }
+	/**
+	 * It recursively scans all inserted objects and calls their draw ().
+	 */
+	public function drawAllContents()
+	{
+		if (!empty($this->pageParts)) {
+			foreach ($this->pageParts as $part) {
+				if (is_object($part) && method_exists($part, 'draw')) {
+					$part->draw();
+				} else {
+					echo $part;
+				}
+			}
+		}
+		$this->drawStatus = true;
+	}
 
-    /**
-     * Vrací rendrovaný obsah objektů.
-     *
-     * @return string
-     */
-    public function getRendered() {
-        $retVal = '';
-        ob_start();
-        $this->draw();
-        $retVal .= ob_get_contents();
-        ob_end_clean();
+	/**
+	 * Returns the rendered contents of objects.
+	 *
+	 * @return string
+	 */
+	public function getRendered()
+	{
+		$retVal = '';
+		ob_start();
+		$this->draw();
+		$retVal .= ob_get_contents();
+		ob_end_clean();
 
-        return $retVal;
-    }
+		return $retVal;
+	}
 
-    /**
-     * Vykresli se, pokud již tak nebylo učiněno.
-     * Draw contents not drawn yet.
-     */
-    public function drawIfNotDrawn() {
-        if ($this->drawStatus === false) {
-            $this->draw();
-        }
-    }
+	/**
+	 * Draw contents not drawn yet.
+	 */
+	public function drawIfNotDrawn()
+	{
+		if ($this->drawStatus === false) {
+			$this->draw();
+		}
+	}
 
-    /**
-     * Vrací stav návěští finalizace části.
-     *
-     * @return bool
-     */
-    public function isFinalized() {
-        return $this->finalized;
-    }
+	/**
+	 * Returns the status of the part finalization of the flag.
+	 *
+	 * @return bool
+	 */
+	public function isFinalized()
+	{
+		return $this->finalized;
+	}
 
-    /**
-     * Set label of parts finalized.
-     * Nastaví návěstí finalizace části.
-     *
-     * @param bool $flag příznak finalizace
-     */
-    public function setFinalized($flag = true) {
-        $this->finalized = $flag;
-    }
+	/**
+	 * Set label of parts finalized.
+	 *
+	 * @param bool $flag finalization flag
+	 */
+	public function setFinalized($flag = true)
+	{
+		$this->finalized = $flag;
+	}
 
-    /**
-     * Je element prázdný ?
-     *
-     * @return bool prázdnost
-     */
-    public function isEmpty() {
-        return empty($this->pageParts);
-    }
+	/**
+	 * Is the element empty?
+	 *
+	 * @return bool emptiness
+	 */
+	public function isEmpty()
+	{
+		return empty($this->pageParts);
+	}
 
-    /**
-     * Always return Embedable item
-     * 
-     * @param mixed $item
-     * 
-     * @return Embedable
-     */
-    public static function embedablize($item) {
-        return (is_object($item) && $item instanceof Embedable) ? $item : new self($item);
-    }
+	/**
+	 * Always returns Embedable item
+	 * 
+	 * @param mixed $item
+	 * 
+	 * @return Embedable
+	 */
+	public static function embedablize($item)
+	{
+		return (is_object($item) && $item instanceof Embedable) ? $item : new self($item);
+	}
 
-    /**
-     * Render Obect (and its contents) as string.
-     *
-     * @return string
-     */
-    public function __toString() {
-        ob_start();
-        $this->draw();
-        $objectOut = ob_get_contents();
-        ob_end_clean();
+	/**
+	 * Render Obect (and its contents) as string.
+	 *
+	 * @return string
+	 */
+	public function __toString()
+	{
+		ob_start();
+		$this->draw();
+		$objectOut = ob_get_contents();
+		ob_end_clean();
 
-        return $objectOut;
-    }
-
+		return $objectOut;
+	}
 }

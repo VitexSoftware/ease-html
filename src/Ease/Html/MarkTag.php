@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 mark tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 mark tag.
  */
 class MarkTag extends PairTag
 {
@@ -14,7 +14,7 @@ class MarkTag extends PairTag
      * Defines marked/highlighted text
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties mark tag properties
      */
     public function __construct($content = null, $properties = [])
     {

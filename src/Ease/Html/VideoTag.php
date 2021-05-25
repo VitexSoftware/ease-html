@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 video tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 video tag.
  */
 class VideoTag extends PairTag
 {
@@ -14,7 +14,7 @@ class VideoTag extends PairTag
      * Defines video or movie
      *
      * @param mixed  $content    items included
-     * @param array  $properties params array
+     * @param array  $properties video tag properties
      */
     public function __construct($content = null, $properties = [])
     {

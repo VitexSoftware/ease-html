@@ -2,15 +2,15 @@
 
 namespace Ease\Html;
 
-/**
- * Radio button.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Radio button.
  */
 class InputRadioTag extends InputTag
 {
     /**
-     * Vracená hodnota.
+     * Return value.
      *
      * @var string
      */
@@ -19,25 +19,24 @@ class InputRadioTag extends InputTag
     /**
      * Radio button.
      *
-     * @param string $name          jméno tagu
-     * @param string $value         vracená hodnota
-     * @param array  $tagProperties vlastnosti tagu
+     * @param string $name          tag name
+     * @param string $value         return value
+     * @param array  $properties    input radio tag properties
      */
-    public function __construct($name, $value = null, $tagProperties = null)
+    public function __construct($name, $value = null, $properties = null)
     {
         parent::__construct($name, $value);
-        if ($tagProperties) {
-            $this->setTagProperties($tagProperties);
+        if ($properties) {
+            $this->setTagProperties($properties);
         }
         $this->setTagProperties(['type' => 'radio']);
         $this->value = $value;
     }
 
     /**
-     * Poprvé nastaví hodnotu checkboxu. Druhé volání nastavuje příznak checked,
-     * pokud je hodnota stejná jako již nabitá
+     * Sets the checkbox value for the first time. The second call sets the checked flag, if the value is the same as already charged.
      *
-     * @param string $value vracená hodnota
+     * @param string $value return value
      */
     public function setValue($value)
     {

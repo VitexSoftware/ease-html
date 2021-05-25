@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * Html Select.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Html Select.
  * @deprecated since version 1.2
  */
 class Select extends SelectTag

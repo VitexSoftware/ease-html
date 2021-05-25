@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML Paragraph class tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author     Vitex <vitex@hippy.cz>
+ * HTML Paragraph class tag.
  */
 class PTag extends PairTag
 {
 
     /**
-     * Odstavec.
+     * Paragraph.
      *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
+     * @param mixed $content    inserted content
+     * @param array $properties p tag properties
      */
     public function __construct($content = null, $properties = [])
     {

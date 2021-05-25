@@ -2,26 +2,26 @@
 
 namespace Ease\Html;
 
-/**
- * Tag Label pro LabeledInput.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>
+ * Tag Label for LabeledInput.
  */
 class LabelTag extends PairTag
 {
     /**
-     * Odkaz na obsah.
+     * Link to content.
      *
      * @var mixed
      */
     public $contents = null;
 
     /**
-     * Show tag label
+     * Displays tag label.
      *
-     * @param string $for        vztažný element
-     * @param mixed  $contents   obsah opatřovaný popiskem
-     * @param array  $properties vlastnosti tagu
+     * @param string $for        reference element
+     * @param mixed  $contents   labeled content
+     * @param array  $properties labe tag properties
      */
     public function __construct($for, $contents = null, $properties = [])
     {
@@ -31,9 +31,9 @@ class LabelTag extends PairTag
     }
 
     /**
-     * Set object name.
+     * Sets object name.
      *
-     * @param string $objectName nastavované jméno
+     * @param string $objectName the set name
      *
      * @return string New object name
      */

@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 week input tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 week input tag.
  */
 class InputWeekTag extends InputTag
 {
@@ -13,9 +13,9 @@ class InputWeekTag extends InputTag
     /**
      * The <input type="week"> allows the user to select a week and year.
      *
-     * @param string $name       name
+     * @param string $name       tag name
      * @param string $value      initial value
-     * @param array  $properties additional properties
+     * @param array  $properties additional input tel input week tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {

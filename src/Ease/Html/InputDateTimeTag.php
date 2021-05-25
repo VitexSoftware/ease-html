@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * HTML5 datetime input tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML5 datetime input tag. 
  */
 class InputDateTimeTag extends InputTag
 {
@@ -15,7 +15,7 @@ class InputDateTimeTag extends InputTag
      *
      * @param string $name       name
      * @param string $value      initial value
-     * @param array  $properties additional properties
+     * @param array  $properties additional input time tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {

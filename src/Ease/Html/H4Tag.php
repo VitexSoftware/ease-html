@@ -2,19 +2,19 @@
 
 namespace Ease\Html;
 
-/**
- * HTML H4 tag.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vitex <vitex@hippy.cz>
+ * HTML H4 tag.
  */
 class H4Tag extends PairTag
 {
 
     /**
-     * Simple H4 tag.
+     * H4 tag.
      *
-     * @param mixed $content    vkládaný obsah
-     * @param array $properties parametry tagu
+     * @param mixed $content    inserted content
+     * @param array $properties h4 tag propoerties
      */
     public function __construct($content = null, $properties = [])
     {

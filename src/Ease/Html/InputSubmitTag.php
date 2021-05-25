@@ -2,10 +2,10 @@
 
 namespace Ease\Html;
 
-/**
- * Odesílací tlačítko formuláře.
+/** 
+ *  @author Vítězslav Dvořák <info@vitexsoftware.cz>, Jana Viktorie Borbina <jana@borbina.com>
  *
- * @author Vítězslav Dvořák <vitex@hippy.cz>    
+ * Form submit button. 
  */
 class InputSubmitTag extends InputTag
 {
@@ -13,9 +13,9 @@ class InputSubmitTag extends InputTag
     /**
      * Odesílací tlačítko formuláře.
      *
-     * @param string $name       jméno tagu
-     * @param string $value      vracená hodnota
-     * @param array  $properties Pole vlastností tagu
+     * @param string $name       tag name
+     * @param string $value      initial value
+     * @param array  $properties additional input submit tag properties
      */
     public function __construct($name, $value = null, $properties = [])
     {
@@ -29,9 +29,9 @@ class InputSubmitTag extends InputTag
     }
 
     /**
-     * Maketa kuli popisku.
+     * Mockup for label.
      *
-     * @param bool $value je ignorováno
+     * @param bool $value is ignored
      */
     public function setValue($value = true)
     {
